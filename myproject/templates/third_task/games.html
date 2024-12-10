@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <title>task3</title>
+</head>
+<body>
+<h1>Игры</h1>
+
+{% for games_i in games %}
+<li> {{ games_i }} <button> Купить</button></li>
+{% endfor %}
+<p></p>
+<form action="/platform"> <p> <button> Вернуться обратно</button> </p> </form>
+</body>
+</html>

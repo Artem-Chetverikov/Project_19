@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Task 5 </title>
+</head>
+<body>
+<h2>{{ info.error }}</h2>
+{% if not is_by_django %}
+<form id="1" method="post">
+    {% csrf_token %}
+    <label for="username">Введите логин: </label>
+    <input type="text" id="username" name="username" maxlength="30" required>
+
+    <label for="password">Введите пароль: </label>
+    <input type="text" id="password" name="password" minlength="8" required>
+
+    <label for="repeat_password">Повторите пароль: </label>
+    <input type="text" id="repeat_password" name="repeat_password" minlength="8" required>
+
+    <label for="age">Введите свой возраст: </label>
+    <input type="text" id="age" name="age" maxlength="3" required>
+
+    <button form="1" type="submit">Зарегистрироваться</button>
+</form>
+<br><br>
+<p>{{ welcome }}</p>
+{% endif %}
+
+
+{% if is_by_django %}
+<form id="2" method="post">
+    {% csrf_token %}
+    Введите логин: {{ form.username_dj }} Введите пароль: {{ form.password_dj }} Повторите пароль:
+    {{ form.repeat_password_dj }} Введите свой возраст: {{ form.age_dj }}
+    <button form="2" type="submit">Зарегистрироваться</button>
+</form>
+<br><br>
+<p>{{ welcome }}</p>
+{% endif %}
+
+</body>
+</html>
