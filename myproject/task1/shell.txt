@@ -1,0 +1,19 @@
+cd myproject
+
+python manage.py shell
+
+from task1.models import Game, Buyer
+
+buyer_1 = Buyer.objects.create(name='Покупатель Один', balance=10.01, age=35)
+buyer_2 = Buyer.objects.create(name='Покупатель Два', balance=1000, age=25)
+buyer_3 = Buyer.objects.create(name='Покупатель Три', balance=10000, age=15)
+
+game_1 = Game.objects.create(title='Cyberpunk 2077', cost='31', size='46.2', description='Игра года', age_limited=True)
+game_2 = Game.objects.create(title='Mario', cost='5', size='0.5', description='Старая игра', age_limited=False)
+game_3 = Game.objects.create(title='Hitman', cost='12', size='36.6', description='Кто убил Марка?', age_limited=True)
+
+game_1.buyer.set((buyer_1, buyer_2))
+game_2.buyer.set((buyer_1, buyer_3))
+game_3.buyer.set((buyer_1, buyer_2))
+
+
