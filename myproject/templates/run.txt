@@ -1,6 +1,14 @@
+### запуск сервера
 
 cd myproject
 python manage.py runserver
 
+### создание пользователя админа
 python manage.py createsuperuser
+
+###  создание миграции
+python manage.py makemigrations task1
+
+### обновление моделей и таблиц
+python manage.py migrate
 

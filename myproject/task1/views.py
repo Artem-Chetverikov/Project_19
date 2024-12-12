@@ -1,8 +1,12 @@
 from django.http import HttpResponse
+from django.template.context_processors import request
+
 from .forms import UseForm
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from task1.models import Game, Buyer
+from task1.models import Game, Buyer, News
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 def index(request):
@@ -110,3 +114,18 @@ def sign_up_by_django(request):
 
     context['form'] = form
     return render(request, 'fifth_task/registration_page.html', context)
+
+
+def news(request):
+    news_all = News.objects.all()
+    paginator = Paginator(news_all, 5)  # 10 постов на странице
+    page_number = request.GET.get('page')
+
+    try:
+        news = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
+
+    return render(request, 'fourth_task/news.html', {'news': news})
