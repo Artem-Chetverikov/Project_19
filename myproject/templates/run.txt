@@ -2,3 +2,5 @@
 cd myproject
 python manage.py runserver
 
+python manage.py createsuperuser
+
